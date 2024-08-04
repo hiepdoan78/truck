@@ -27,13 +27,11 @@ def generate_launch_description():
 
     controller_params_file = os.path.join(get_package_share_directory(package_name),'config','my_controllers.yaml')
     
-    joint_limits_file = os.path.join(get_package_share_directory(package_name), 'config', 'joint_limits.yaml')
-
     controller_manager = Node(
         package="controller_manager",
         executable="ros2_control_node",
         parameters=[{'robot_description': robot_description},
-                    controller_params_file, {'ros__parameters': {'joint_limits': joint_limits_file}}],
+                    controller_params_file],
          remappings=[('ackermann_steering_controller/odometry', '/odom'),
                     ('ackermann_steering_controller/tf_odometry', '/tf')]
     )
