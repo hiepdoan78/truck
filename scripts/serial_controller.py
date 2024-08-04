@@ -32,7 +32,7 @@ class SerialController(Node):
             self.get_logger().info("Serial debug enabled")
 
         self.get_logger().info(f"Connecting to port {self.serial_port_name} at {self.baud_rate}.")
-        self.conn = serial.Serial(self.serial_port_name, self.baud_rate, timeout=1.0)
+        self.conn = serial.Serial(self.serial_port_name, self.baud_rate, timeout=0.2)
         self.get_logger().info(f"Connected to {self.conn.port}")
         self.mutex = Lock()
 
