@@ -17,9 +17,7 @@ class SerialController(Node):
             10)
         self.steering_publisher = self.create_publisher(Float64, '/servo_steering_controller/command', 10)
         self.wheel_publisher = self.create_publisher(Float64, '/rear_wheel_controller/command', 10)
-        self.wheelbase_length = 0.26
-        self.wheelbase_width = 0.213
-
+        
         self.declare_parameter('serial_port', value="/dev/ttyAMA10")
         self.serial_port_name = self.get_parameter('serial_port').value
 
