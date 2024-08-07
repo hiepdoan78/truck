@@ -17,17 +17,8 @@ def generate_launch_description():
     xacro_file = os.path.join(pkg_path, 'robot', 'truck.urdf.xacro')
     robot_description_config = Command(['xacro ', xacro_file, ' use_ros2_control:=', use_ros2_control, ' sim_mode:=', use_sim_time])
 
-    # Load joint limits
-    joint_limits_path = os.path.join(get_package_share_directory('truck'), "config", "joint_limits.yaml")
-    robot_description_planning = {"robot_description_planning": load_yaml(joint_limits_path)}
-    
     # Create a robot_state_publisher node
-    params = {
-        'robot_description': robot_description_config,
-        'use_sim_time': use_sim_time,
-        'robot_description_planning': robot_description_planning
-    }
-    
+    params = {'robot_description': robot_description_config, 'use_sim_time': use_sim_time}
     node_robot_state_publisher = Node(
         package='robot_state_publisher',
         executable='robot_state_publisher',
