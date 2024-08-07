@@ -7,21 +7,15 @@ from launch_ros.actions import Node
 import xacro
 import yaml
 
-def load_yaml(file_path):
-    with open(file_path, 'r') as file:
-        return yaml.safe_load(file)
-
 def generate_launch_description():
     # Check if we're told to use sim time
     use_sim_time = LaunchConfiguration('use_sim_time')
     use_ros2_control = LaunchConfiguration('use_ros2_control')
-    joint_limits_yaml = PathJoinSubstitution(
-        [get_package_share_directory('truck'), "config", "joint_limits.yaml"])
     
     # Process the URDF file
     pkg_path = os.path.join(get_package_share_directory('truck'))
     xacro_file = os.path.join(pkg_path, 'robot', 'truck.urdf.xacro')
-    robot_description_config = Command(['xacro ', xacro_file, ' use_ros2_control:=', use_ros2_control, ' sim_mode:=', use_sim_time,  " joint_limit_params:=", joint_limits_yaml])
+    robot_description_config = Command(['xacro ', xacro_file, ' use_ros2_control:=', use_ros2_control, ' sim_mode:=', use_sim_time])
 
     # Load joint limits
     joint_limits_path = os.path.join(get_package_share_directory('truck'), "config", "joint_limits.yaml")
