@@ -5,7 +5,7 @@ from launch.substitutions import LaunchConfiguration, Command, PathJoinSubstitut
 from launch.actions import DeclareLaunchArgument
 from launch_ros.actions import Node
 import xacro
-import yaml
+
 
 def generate_launch_description():
     # Check if we're told to use sim time
