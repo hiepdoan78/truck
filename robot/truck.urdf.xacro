@@ -343,6 +343,7 @@
   <!-- FRONT LEFT WHEEL -->
   <link name="front_left_wheel">
     <visual>
+      <origin xyz="0 0 0" rpy="${pi/2} 0 ${pi/2}"/>
       <geometry>
         <cylinder length="${wheel_width}" radius="${wheel_radius}"/>
       </geometry>
@@ -363,10 +364,10 @@
     </gazebo>
 
   <joint name="front_left_wheel_joint" type="revolute">
-      <axis xyz="0 1 0"/>
+      <axis xyz="0 0 1"/>
       <parent link="cabin_link"/>
       <child link="front_left_wheel"/>
-      <origin rpy="${pi/2} 0 0" xyz="${cabin_length/2 - 0.111} ${front_wheelbase_width/2 - wheel_width/2} ${- cabin_height/2 - wheel_radius}"/>
+      <origin rpy="0 0 ${pi/2}" xyz="${cabin_length/2 - 0.111} ${front_wheelbase_width/2 - wheel_width/2} ${- cabin_height/2 - wheel_radius}"/>
       <limit lower="-${30.21817774*pi/180}" upper="${30.21817774*pi/180}" effort="100.0" velocity="0.0"/>
       <dynamics damping="0.2"/>
       <mimic joint="virtual_front_wheel_joint" multiplier="1.0" offset="0.0"/>
@@ -375,6 +376,7 @@
   <!-- FRONT RIGHT WHEEL -->
   <link name="front_right_wheel">
     <visual>
+      <origin xyz="0 0 0" rpy="${pi/2} 0 ${pi/2}"/>
       <geometry>
         <cylinder length="${wheel_width}" radius="${wheel_radius}"/>
       </geometry>
@@ -393,10 +395,10 @@
     </gazebo>
 
   <joint name="front_right_wheel_joint" type="revolute">
-    <axis xyz="0 1 0"/>
+    <axis xyz="0 0 1"/>
     <parent link="cabin_link"/>
     <child link="front_right_wheel"/>
-    <origin rpy="${pi/2} 0 0" xyz="${cabin_length/2 - 0.111} ${-front_wheelbase_width/2 + wheel_width/2} ${- cabin_height/2 - wheel_radius}"/>
+    <origin rpy="0 0 ${pi/2}" xyz="${cabin_length/2 - 0.111} ${-front_wheelbase_width/2 + wheel_width/2} ${- cabin_height/2 - wheel_radius}"/>
     <limit lower="-${30.21817774*pi/180}" upper="${30.21817774*pi/180}" effort="100.0" velocity="0.0"/>
     <dynamics damping="0.2"/>
     <mimic joint="virtual_front_wheel_joint" multiplier="1.0" offset="0.0"/>
@@ -405,6 +407,7 @@
 
   <link name="virtual_front_wheel">
     <visual>
+      <origin xyz="0 0 0" rpy="${pi/2} 0 ${pi/2}"/>
       <geometry>
         <cylinder length="0.01" radius="${wheel_radius}"/>
       </geometry>
@@ -415,8 +418,8 @@
   <joint name="virtual_front_wheel_joint" type="revolute">
     <parent link="cabin_link"/>
     <child link="virtual_front_wheel"/>
-    <origin xyz="${cabin_length/2 - 0.111} 0 ${- cabin_height/2 - wheel_radius}" rpy="${pi/2} 0 0"/>
-    <axis xyz="0 1 0"/>
+    <origin xyz="${cabin_length/2 - 0.111} 0 ${- cabin_height/2 - wheel_radius}" rpy="0 0 ${pi/2}"/>
+    <axis xyz="0 0 1"/>
     <limit lower="-${30.21817774*pi/180}" upper="${30.21817774*pi/180}" effort="100.0" velocity="0.0"/>
     <dynamics damping="0.2"/>
   </joint>
