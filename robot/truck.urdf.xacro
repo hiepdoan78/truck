@@ -1,6 +1,5 @@
 <?xml version="1.0"?>
 <robot xmlns:xacro="http://ros.org/wiki/xacro" name="truck" >
-  <xacro:include filename="ros2_control.xacro" />
 
   <xacro:arg name="wheel_diameter" default="0.09"/>
 
